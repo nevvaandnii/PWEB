@@ -4,37 +4,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistem Laundry</title>
+    <link rel="stylesheet" href="css_pweb1.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie" type="text/css">
 </head>
 <body>
-    <header style="background-color:lightcyan"><img src="logoBersih.png" width="197" height="61" alt="Bersih.in_Laundry_Logo">Sistem Laundry Bersihin</header>
-    <nav>
-        <ul>
+    <header>
+    <nav class="atass">
+      <img src="logoBersih.png" class="logo" alt="Bersih.in_Laundry_Logo">
+        <div class="box">
+          <form class="search-box">
+            <input type="text" placeholder="Cari disini">
+            <button type="submit" class="icons">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
+       <div id="menu-icon" class="icon">
+            <i class="ph ph-list"></i>
+            </div>
+        <ul id="menu-list" class="hidden">
             <li><a href="FormTransaksi.html">Transaksi</a></li>
             <li><a href="dataPelanggan.html">Data Pelanggan</a></li>
             <li><a href="daftarTransaksi.html">Daftar Transaksi</a></li>
         </ul>
     </nav>
+    </header>
     <br>
 
     <main>
-    <section id="statistik">
-      <h>Statistik Transaksi</h>
+    <section class="benner">
+      <h1>Selamat Datang di Bersih.in</h1>
+      <p>Layanan Laundry terbersih dan terpercaya</p>
+    </section>
+    <br> <br>
+    <section>
+      <h2>Statistik Transaksi</h2>
       <p>Transaksi Bulan ini:
       <progress value="85" max="100"></progress>  85%</p>
       <p>Transaksi hari Ini:
       <meter value="15" min="0" max="25"></meter>  15 Transaksi</p>
     </section>
+    <h2><i class="fas fa-chart-line"></i> Total Transaksi</h2>
+    <section class="cards-section">
+    <div class="card-container">
+
+      <div class="card">
+        <h4>Total Transaksi</h4>
+        <p>120</p>
+      </div>
+
+      <div class="card">
+        <h4>Transaksi Hari Ini</h4>
+        <p>15</p>
+      </div>
+
+      <div class="card">
+        <h4>Layanan Terbanyak</h4>
+        <p>Cuci Kering</p>
+      </div>
+
+      <div class="card">
+        <h4>Total Pelanggan</h4>
+        <p>105 Orang</p>
+      </div>
+
+    </div>
+  </section>
     </main>
 
     <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
     
-    <footer>
-    <p>&copy; 2026 Bersih.in. All rights reserved.</p>
-    <nav>
-      <a href="kebijakan.html">Kebijakan Privasi</a> |
-      <a href="kontak.html">Hubungi Kami</a>
-    </nav>
-  </footer>
+      <footer class="footer-distributed">
+        <div class="footer-left">
+          <h3>Bersih.in <span>Laundry</span></h3>
+          <p class="footer-links">
+          <a href="#">Home</a>
+          |
+          <a href="#">About</a>
+          |
+          <a href="#">Contact</a>
+          |
+          <a href="#">Blog</a>
+          </p>
+          <p class="footer-company-name">Copyright 2026 <strong>Bersih.in</strong> All rights reserved</p>
+        </div>
+        <div class="footer-center">
+          <div>
+            <i class="fa fa-map-marker"></i>
+            <p><span>Jember</span>Indonesia</p>
+          </div>
+          <div>
+            <i class="fa fa-phone"></i>
+            <p>+6285**90**12</p>
+          </div>
+          <div>
+            <i class="fa fa-envelope"></i>
+            <p><a href="#">xyz@gmail.com</a></p>
+          </div>
+        </div>
 
+        <div class="footer-right">
+          <p class="footer-company-about">
+            <span>About the Company</span>
+            <strong>Bersihin</strong> adalah layanan laundry terbersih dan terpercaya
+          </p>
+          <div class="footer-icon">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-youtube"></i></a>
+          </div>
+        </div>
+
+  </footer>
+  <script src="pweb1.js"></script>
 </body>
 </html>
