@@ -5,7 +5,6 @@ header{
     width: 100%;
     z-index: 1000;
     background-color:lightcyan;
-    /* align-items: center; */
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     background-size: auto;
 }
