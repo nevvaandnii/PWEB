@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Transaksi Laundry</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+ <header class="navbar">
+  <div class="logo">
+    <img src="logoBersih.png" alt="logo">
+  </div>
+  <nav>
+    <a href="index.html">Dashboard</a>
+    <a href="transaksi.html">Transaksi</a>
+     <a href="daftarTransaksi.html">Daftar Transaksi</a>
+    <a href="#">Pelanggan</a>
+  </nav>
+</header>
+<div class="transaksi-page">
+  <div class="container">
+
+    <div class="price-list">
+      <h3>Daftar Layanan</h3>
+
+      <div class="price-card">
+        <p>Cuci</p>
+        <span>Rp 5.000 / kg</span>
+      </div>
+
+      <div class="price-card">
+        <p>Cuci + Setrika</p>
+        <span>Rp 7.000 / kg</span>
+      </div>
+
+      <div class="price-card">
+        <p>Setrika</p>
+        <span>Rp 4.000 / kg</span>
+      </div>
+    </div>
+
+    <div class="form-transaksi">
+      <h3>Form Transaksi</h3>
+
+      <form id="formTransaksi">
+        <input type="text" id="nama" placeholder="Nama Pelanggan">
+
+        <select id="layanan">
+          <option value="">Pilih Layanan</option>
+          <option value="5000">Cuci</option>
+          <option value="7000">Cuci + Setrika</option>
+          <option value="4000">Setrika</option>
+        </select>
+
+        <input type="number" id="berat" min="1" placeholder="Berat (kg)">
+
+        <input type="text" id="total" placeholder="Total Harga (Auto)" disabled>
+
+        <div class="row">
+          <input type="date" id="tglMasuk">
+          <input type="date" id="tglAmbil">
+        </div>
+
+        <textarea id="catatan" placeholder="Catatan (opsional)"></textarea>
+
+        <button type="submit">Simpan Transaksi</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
