@@ -1,83 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Laundry</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie" type="text/css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Kasir - Bersih.in</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-    <nav class="atass">
-      <img src="logoBersih.png" class="logo" alt="Bersih.in_Laundry_Logo">
-        <div class="box">
-          <form class="search-box">
-            <input type="text" placeholder="Cari disini">
-            <button type="submit" class="icons">
-              <i class="fas fa-search"></i>
-            </button>
-          </form>
-        </div>
-       <div id="menu-icon" class="icon">
-            <i class="ph ph-list"></i>
-            </div>
-        <ul id="menu-list" class="hidden">
-            <li><a href="FormTransaksi.html">Transaksi</a></li>
-            <li><a href="dataPelanggan.html">Data Pelanggan</a></li>
-            <li><a href="daftarTransaksi.html">Daftar Transaksi</a></li>
-        </ul>
-    </nav>
-    </header>
-    <br>
 
-    <main>
-    <section class="benner">
-      <h1>Selamat Datang di Bersih.in</h1>
-      <p>Layanan Laundry terbersih dan terpercaya</p>
-    </section>
-    <br> <br>
-    <section>
-      <h2>Statistik Transaksi</h2>
-      <p>Transaksi Bulan ini:
-      <progress value="85" max="100"></progress>  85%</p>
-      <p>Transaksi hari Ini:
-      <meter value="15" min="0" max="25"></meter>  15 Transaksi</p>
-    </section>
-    <h2><i class="fas fa-chart-line"></i> Total Transaksi</h2>
-    <section class="cards-section">
-    <div class="card-container">
+<header class="navbar">
+  <div class="logo">
+    <img src="logoBersih.png" alt="logo">
+  </div>
+  <nav>
+    <a href="#">Dashboard</a>
+    <a href="transaksi.html">Transaksi</a>
+     <a href="#">Daftar Transaksi</a>
+    <a href="#">Pelanggan</a>
+  </nav>
+</header>
 
-      <div class="card">
-        <h4>Total Transaksi</h4>
-        <p>120</p>
+<section class="hero">
+  <div class="hero-text">
+    <h1>Dashboard Kasir</h1>
+    <p>Kelola transaksi laundry dengan cepat & mudah</p>
+  </div>
+</section>
+
+<section class="cards">
+
+  <div class="card" onclick="flipCard(this)">
+    <div class="card-inner">
+      <div class="card-front">
+        <i class="fa fa-money-bill"></i>
+        <h3>Total Transaksi</h3>
+       <p id="totalTransaksi">0</p>
       </div>
-
-      <div class="card">
-        <h4>Transaksi Hari Ini</h4>
-        <p>15</p>
+      <div class="card-back">
+        <h4>Detail</h4>
+        <p>Total semua transaksi</p>
       </div>
-
-      <div class="card">
-        <h4>Layanan Terbanyak</h4>
-        <p>Cuci Kering</p>
-      </div>
-
-      <div class="card">
-        <h4>Total Pelanggan</h4>
-        <p>105 Orang</p>
-      </div>
-
     </div>
-  </section>
-    </main>
+  </div>
 
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-    
-      <footer class="footer-distributed">
+  <div class="card" onclick="flipCard(this)">
+    <div class="card-inner">
+      <div class="card-front">
+        <i class="fa fa-calendar-day"></i>
+        <h3>Hari Ini</h3>
+        <p id="transaksiHariIni">0</p>
+      </div>
+      <div class="card-back">
+        <h4>Detail</h4>
+        <p>Transaksi hari ini</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" onclick="flipCard(this)">
+    <div class="card-inner">
+      <div class="card-front">
+        <i class="fa fa-star"></i>
+        <h3>Layanan Terbanyak</h3>
+        <p id="layananTerbanyak">-</p>
+      </div>
+      <div class="card-back">
+        <h4>Detail</h4>
+        <p>Layanan paling sering dipilih</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" onclick="flipCard(this)">
+    <div class="card-inner">
+      <div class="card-front">
+        <i class="fa fa-users"></i>
+        <h3>Ordera terkecil</h3>
+        <p id="orderKecil">0 </p> 
+      </div>
+      <div class="card-back">
+        <h4>Detail</h4>
+        <p>Orderan Paling Kecil (KiloGram)</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="chart-container">
+  <h2>Statistik Transaksi</h2>
+  <canvas id="myChart"></canvas>
+</section>
+
+
+
+<footer class="footer-distributed">
         <div class="footer-left">
           <h3>Bersih.in <span>Laundry</span></h3>
           <p class="footer-links">
@@ -107,7 +129,7 @@
         </div>
 
         <div class="footer-right">
-          <p class="footer-company-about">
+          <p class="footer-company-about">  
             <span>About the Company</span>
             <strong>Bersihin</strong> adalah layanan laundry terbersih dan terpercaya
           </p>
@@ -120,6 +142,7 @@
         </div>
 
   </footer>
-  <script src="script.js"></script>
+
+<script src="script.js"> </script>
 </body>
 </html>
