@@ -7,6 +7,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::view('/tentang', 'tentang');
-Route::get('/hitung/{a}/{b}', fn($a, $b) => $a + $b);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
+Route::get('/test-flash', function () {
+    return redirect('/dashboard')
+        ->with('success', 'Selamat datang di sistem!');
+});
+Route::view('/transaksi', 'transaksi');
+Route::view('/daftar-transaksi', 'daftar-transaksi');

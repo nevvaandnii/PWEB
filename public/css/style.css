@@ -1,0 +1,509 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f7fb;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d1b4c;
+  padding: 15px 40px;
+  color: white;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 61px;
+    width: 197px;
+}
+
+.navbar nav a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.navbar nav a:hover {
+  color: #68c4e0;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 5px 10px;
+  border-radius: 25px;
+  width: 220px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+
+.search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  padding: 5px;
+  background: transparent;
+}
+
+.search-box button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: midnightblue;
+  font-size: 16px;
+}
+
+.search-box button:hover {
+  color: #73c6df;
+}
+
+.hero {
+  background: linear-gradient(120deg, #1e3c72, #2a5298);
+  color: white;
+  padding: 60px;
+  text-align: center;
+}
+
+.chart-container {
+  width: 90%;
+  margin: 30px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 30px;
+}
+
+.card {
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card-front {
+  background: linear-gradient(135deg, #ffffff, #f0f4ff);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card.flip .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.card-front i {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: #2a5298;
+}
+
+.card-back {
+  background: #2a5298;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
+}
+
+footer{
+    position: static;
+    bottom: 0;
+    background-size: auto;
+    background-color: midnightblue;
+    color: white;
+    padding: 20px;
+    margin-top: auto;
+}
+
+@media (max-height:767px){
+    footer{
+        position: static;
+    }
+    header{
+        padding-top: 40px
+    }
+}
+.footer-distributed{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color:midnightblue;
+    font: bold 16px sans-serif;
+    padding: 20px;
+}
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+    flex: 1;
+    min-width: 250px;
+    margin: 10px;
+
+}
+
+.footer-distributed .footer-left{
+    width: 25%;
+}
+
+.footer-distributed h3{
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.footer-distributed h3 span{
+    color: #68c4e0;
+    font-weight: 400;
+}
+
+.footer-distributed .footer-links{
+    color: lightsteelblue;
+    margin: 20px 0 12px;
+    font-weight: bold;
+    font-family: Georgia, serif;
+}
+
+.footer-distributed .footer-links a{
+    display:inline-block;
+    line-height: 2;
+    text-decoration:none;
+    color: inherit;
+}
+
+.footer-distributed .footer-company-name{
+    color:lightgray;
+    font-size: 12px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.footer-distributed .footer-center{
+    width: 36%;
+}
+
+.footer-distributed .footer-center i{
+    background-color: rgb(10, 10, 81);
+    color: white;
+    font-size: 20px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 42px;
+    margin: 10px 20px;
+    vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope{
+    font-size: 17px;
+    line-height: 38px;
+}
+
+.footer-distributed .footer-center p{
+    display: inline-block;
+    color: white;
+    vertical-align: middle;
+    margin: 0;
+}
+
+.footer-distributed .footer-center p span{
+    display: block;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.footer-distributed .footer-right{
+    width: 38%;
+}
+
+.footer-distributed .footer-company-about{
+    line-height: 20px;
+    color: white;
+    font-size: 12px;
+    font-weight: normal;
+    font-family: 'Segoe UI',sans-serif;
+    margin: 10px;
+}
+
+.footer-distributed .footer-company-about span{
+    display: block;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.footer-distributed .footer-icon{
+    margin-top: 20px;
+}
+
+.footer-distributed .footer-icon a{
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-color: rgb(10, 10, 81);
+    border-radius: 10px;
+    font-size: 15px;
+    color: lightcyan;
+    text-align: center;
+    line-height: 35px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+.footer-distributed .footer-icon a:hover{
+    background-color:cornflowerblue;
+}
+
+.footer-links a:hover{
+    color:cornflowerblue;
+}
+
+@media (max-width: 767px){
+    .footer-distributed {
+        flex-direction: column;
+    align-items: center;
+    text-align: center;
+    }
+    .footer-links,
+    .footer-center,
+    .footer-right{
+         width: 100%;
+        text-align: center;
+    margin-bottom: 20px;}
+
+}
+@media (max-width : 767px) {
+    nav{
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    nav ul{
+        flex-direction: column;
+        width: 100%;
+    }
+    nav ul.hidden{
+        display: none;
+    }
+    .icon{
+    display: flex;
+    align-items:center;
+    }
+}
+
+/* TRANSAKSI */
+
+.transaksi-page .container {
+    display: flex;
+    gap: 30px;
+    padding: 40px;
+  }
+
+  .transaksi-page .price-list {
+    width: 30%;
+  }
+
+  .transaksi-page .price-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+  }
+
+  .transaksi-page .price-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .transaksi-page .price-card p {
+    margin: 0;
+    font-weight: bold;
+  }
+
+  .transaksi-page .price-card span {
+    color: #2a5298;
+  }
+
+  .transaksi-page .form-transaksi {
+    width: 70%;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  }
+
+  .transaksi-page form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .transaksi-page input,
+  .transaksi-page select,
+  .transaksi-page textarea {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+  }
+
+  .transaksi-page .row {
+    display: flex;
+    gap: 10px;
+  }
+
+  .transaksi-page button {
+    background: #0d1b4c;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .transaksi-page button:hover {
+    background: #68c4e0;
+  }
+
+/* daftarTransaksi */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+thead {
+  background: linear-gradient(to right, #0d1b4c, #011365);
+  color: white;
+}
+
+th, td {
+  padding: 15px;
+  text-align: center;
+}
+
+.status {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status.baru {
+  background: #ffe0b2;
+  color: #ff9800;
+}
+
+.status.proses {
+  background: #bbdefb;
+  color: #2196f3;
+}
+
+.status.selesai {
+  background: #c8e6c9;
+  color: #4caf50;
+}
+
+.action {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.action button {
+  border: none;
+  background: #f1f3f6;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.action button:hover {
+  background: #dfe6f0;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.filter-box {
+  position: absolute;
+  right: 20px;
+  top: 80px;
+  background: #0d1b4c;
+  padding: 20px;
+  border-radius: 15px;
+  width: 250px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
