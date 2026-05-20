@@ -80,4 +80,28 @@ class TransaksiController extends Controller
     return redirect()->route('transaksi.index')
      ->with('success', 'Transaksi berhasil dihapus');
     }
+
+    public function search(Request $request)
+    {
+        $cari =
+        $request->q;
+        $data =
+
+        Transaksi::where(
+        'user_id',
+        auth()->id()
+        )
+
+        ->where(
+        'nama_pelanggan',
+        'like',
+        "%$cari%"
+        )
+
+        ->get();
+        return response()
+        ->json(
+        $data
+        );
+    }
 }

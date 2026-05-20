@@ -1,58 +1,91 @@
 <header class="navbar">
 
-  <div class="logo">
-    <img src="image/logoBersih.png" alt="logo">
-  </div>
+<div class="logo">
 
-  <div class="box">
-    <form class="search-box">
+<img
+src="{{ asset('image/logoBersih.png') }}"
+alt="logo">
 
-      <input type="text" placeholder="Cari disini">
+</div>
 
-      <button type="submit" class="icons">
-        <i class="fas fa-search"></i>
-      </button>
+<div class="box">
 
-    </form>
-  </div>
+<form class="search-box">
 
-  <nav>
+<input
+type="text"
+placeholder="Cari disini">
 
-    <a href="{{ url('/dashboard') }}">
-        Dashboard
-    </a>
+<button
+type="submit"
+class="icons">
 
-    <a href="{{ route('transaksi.create') }}">
-        Transaksi
-    </a>
+<i class="fas fa-search"></i>
 
-    <a href="{{ route('transaksi.index') }}">
-        Daftar Transaksi
-    </a>
+</button>
 
-    <a href="#">
-        Pelanggan
-    </a>
+</form>
+
+</div>
+
+<nav>
+
+<a href="{{ url('/dashboard') }}">
+Dashboard
+</a>
+
+<a href="{{ route('transaksi.create') }}">
+Transaksi
+</a>
+
+<a href="{{ route('transaksi.index') }}">
+Daftar Transaksi
+</a>
+
+<a href="#">
+Pelanggan
+</a>
+
+<a href="{{ url('/preferensi') }}">
+Preferensi
+</a>
 
 </nav>
 
-  <div class="user-login">
-    Halo, {{ auth()->user()->name }}
-  </div>
+<button
+type="button"
+id="toggleDark"
+class="dark-btn">
+
+🌙
+
+</button>
+
 <div class="user-section">
 
-    Halo, {{ auth()->user()->name }}
+<span>
 
-    <form action="{{ route('logout') }}"
-          method="POST">
+Halo,
+{{ auth()->user()->name }}
 
-        @csrf
+</span>
 
-        <button type="submit" class="logout-btn">
-            Logout
-        </button>
+<form
+action="{{ route('logout') }}"
+method="POST">
 
-    </form>
+@csrf
+
+<button
+type="submit"
+class="logout-btn">
+
+Logout
+
+</button>
+
+</form>
 
 </div>
+
 </header>
