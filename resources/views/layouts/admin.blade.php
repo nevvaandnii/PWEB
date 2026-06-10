@@ -84,9 +84,7 @@
 
 <body>
 
-        @if(!isset($hideNavbar))
-        @include('partials.navbar')
-    @endif
+    @include('partials.navbar-admin')
 
     @if(session('success'))
         <div class="alert-success">
@@ -104,9 +102,7 @@
         @yield('content')
     </main>
 
-    @if(!isset($hideFooter))
     @include('partials.footer')
-@endif
 
     <script src="{{ asset('js/script.js') }}"></script>
 

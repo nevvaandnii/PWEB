@@ -42,22 +42,22 @@
 
         <select name="layanan">
 
-          <option value="">Pilih Layanan</option>
+            <option value="">Pilih Layanan</option>
 
-          <option value="5000"
-            {{ $transaksi->layanan == '5000' ? 'selected' : '' }}>
-            Cuci
-          </option>
+            <option value="Cuci"
+                {{ $transaksi->layanan == 'Cuci' ? 'selected' : '' }}>
+                Cuci
+            </option>
 
-          <option value="7000"
-            {{ $transaksi->layanan == '7000' ? 'selected' : '' }}>
-            Cuci + Setrika
-          </option>
+            <option value="Cuci + Setrika"
+                {{ $transaksi->layanan == 'Cuci + Setrika' ? 'selected' : '' }}>
+                Cuci + Setrika
+            </option>
 
-          <option value="4000"
-            {{ $transaksi->layanan == '4000' ? 'selected' : '' }}>
-            Setrika
-          </option>
+            <option value="Setrika"
+                {{ $transaksi->layanan == 'Setrika' ? 'selected' : '' }}>
+                Setrika
+            </option>
 
         </select>
 
@@ -72,19 +72,41 @@
                disabled>
 
         <div class="row">
+  <input type="date"
+         name="tanggal_masuk"
+         value="{{ old('tanggal_masuk', $transaksi->tanggal_masuk ? $transaksi->tanggal_masuk->format('Y-m-d') : '') }}">
+  <input type="date"
+         name="tanggal_ambil"
+         value="{{ old('tanggal_ambil', $transaksi->tanggal_ambil ? $transaksi->tanggal_ambil->format('Y-m-d') : '') }}">
+</div>
 
+{{-- <div class="row">
           <input type="date"
                  name="tanggal_masuk"
                  value="{{ old('tanggal_masuk', $transaksi->tanggal_masuk) }}">
-
           <input type="date"
                  name="tanggal_ambil"
                  value="{{ old('tanggal_ambil', $transaksi->tanggal_ambil) }}">
+        </div> --}}
 
-        </div>
+        <select name="status">
 
-        <textarea name="catatan"
-                  placeholder="Catatan (opsional)">{{ old('catatan', $transaksi->catatan) }}</textarea>
+        <option value="Proses"
+            {{ $transaksi->status == 'Proses' ? 'selected' : '' }}>
+            Proses
+        </option>
+
+        <option value="Selesai"
+            {{ $transaksi->status == 'Selesai' ? 'selected' : '' }}>
+            Selesai
+        </option>
+
+        <option value="Diambil"
+            {{ $transaksi->status == 'Diambil' ? 'selected' : '' }}>
+            Diambil
+        </option>
+
+        </select>
 
         <button type="submit">
           Update Transaksi
@@ -109,10 +131,23 @@ const total = document.querySelector('#totalHarga');
 
 function hitungTotal() {
 
-    let harga = layanan.value;
+    let harga = 0;
+
+    if(layanan.value === 'Cuci'){
+        harga = 5000;
+    }
+
+    if(layanan.value === 'Cuci + Setrika'){
+        harga = 7000;
+    }
+
+    if(layanan.value === 'Setrika'){
+        harga = 4000;
+    }
+
     let kg = berat.value;
 
-    if (harga && kg) {
+    if(harga && kg){
         total.value = "Rp " + (harga * kg);
     }
 }

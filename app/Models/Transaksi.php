@@ -8,12 +8,14 @@ class Transaksi extends Model
 {
     protected $fillable = [
         'nama_pelanggan',
+        'layanan',
         'berat',
         'total_harga',
         'tanggal_masuk',
         'tanggal_ambil',
         'catatan',
-        'status'
+        'status',
+        'foto_profil'
     ];
 
     protected $casts = [

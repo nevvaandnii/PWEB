@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('title', 'Daftar Transaksi')
 @section('content')
 
@@ -16,24 +16,6 @@
         >
         <div id="hasil"></div>
     </section>
-    <div class="filter-container">
-
-        <select id="filterStatus">
-            <option value="">Semua Status</option>
-            <option value="Proses">Proses</option>
-            <option value="Selesai">Selesai</option>
-            <option value="Diambil">Diambil</option>
-        </select>
-
-        <select id="filterLayanan">
-            <option value="">Semua Layanan</option>
-            @foreach($layanans as $layanan)
-                <option value="{{ $layanan->nama_layanan }}">
-                    {{ $layanan->nama_layanan }}
-                </option>
-            @endforeach
-        </select>
-    </div>
     <br>
     <table>
         <thead>
@@ -64,13 +46,19 @@
 
     <td>
         <div class="action">
-            <a href="{{ route('transaksi.show', $item->id) }}">
+            <a href="{{ route('admin.transaksi.show', $item->id) }}">
                 <button>Detail</button>
             </a>
 
-            <a href="{{ route('transaksi.edit', $item->id) }}">
-                <button>Edit</button>
-            </a>
+            <form action="{{ route('transaksi.destroy', $item->id) }}"
+                  method="POST">
+                @csrf
+                @method('DELETE')
+
+                <button onclick="return confirm('Yakin hapus data?')">
+                    Hapus
+                </button>
+            </form>
         </div>
     </td>
 </tr>
@@ -83,12 +71,9 @@
 </div>
 
 <script>
+document.getElementById('search').addEventListener('keyup', async function(){
 
-async function loadData(){
-
-    let keyword = document.getElementById('search').value;
-    let status = document.getElementById('filterStatus').value;
-    let layanan = document.getElementById('filterLayanan').value;
+    let keyword = this.value;
 
     const response = await fetch(
         `/search-transaksi?q=${keyword}`
@@ -96,25 +81,9 @@ async function loadData(){
 
     const data = await response.json();
 
-    let hasil = data;
-
-    // Filter Status
-    if(status){
-        hasil = hasil.filter(item =>
-            item.status === status
-        );
-    }
-
-    // Filter Layanan
-    if(layanan){
-        hasil = hasil.filter(item =>
-            item.layanan === layanan
-        );
-    }
-
     let html = '';
 
-    hasil.forEach((item,index) => {
+    data.forEach((item,index) => {
 
         html += `
         <tr>
@@ -133,13 +102,18 @@ async function loadData(){
             <td>
                 <div class="action">
 
-                    <a href="/transaksi/${item.id}">
+                    <a href="{{ route('admin.transaksi.show', $item->id) }}">
                         <button>Detail</button>
                     </a>
 
-                    <a href="/transaksi/${item.id}/edit">
-                        <button>Edit</button>
-                    </a>
+                    <form action="/transaksi/${item.id}" method="POST" style="display:inline;">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="_method" value="DELETE">
+
+                        <button onclick="return confirm('Yakin hapus data?')">
+                            Hapus
+                        </button>
+                    </form>
 
                 </div>
             </td>
@@ -148,19 +122,7 @@ async function loadData(){
     });
 
     document.getElementById('tableBody').innerHTML = html;
-}
 
-// Search
-document.getElementById('search')
-.addEventListener('keyup', loadData);
-
-// Filter Status
-document.getElementById('filterStatus')
-.addEventListener('change', loadData);
-
-// Filter Layanan
-document.getElementById('filterLayanan')
-.addEventListener('change', loadData);
-
+});
 </script>
 @endsection

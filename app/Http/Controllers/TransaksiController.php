@@ -3,21 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaksi;
+use App\Models\Layanan;
 use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
 {
     public function index()
     {
-        $transaksi = Transaksi::where('user_id', auth()->id())
-                        ->paginate(10);
+        $transaksi = Transaksi::paginate(10);
+        $layanans = Layanan::all();
 
-        return view('transaksi.index', compact('transaksi'));
+        return view(
+            'transaksi.index',
+            compact(
+                'transaksi',
+                'layanans'
+            )
+        );
     }
 
     public function create()
     {
-        return view('transaksi.create');
+        $layanans = Layanan::all();
+
+        return view(
+            'transaksi.create',
+            compact('layanans')
+        );
     }
 
     public function store(Request $request)
@@ -41,6 +53,17 @@ class TransaksiController extends Controller
             $data['foto_profil'] = $foto;
         }
 
+        if($request->layanan == 'Cuci'){
+            $harga = 5000;
+        }elseif($request->layanan == 'Cuci + Setrika'){
+            $harga = 7000;
+        }else{
+            $harga = 4000;
+        }
+
+        $data['total_harga'] = $harga * $request->berat;
+        $data['status'] = 'Proses';
+
         Transaksi::create($data);
 
         return redirect()->route('transaksi.index')
@@ -58,20 +81,35 @@ class TransaksiController extends Controller
     }
 
     public function update(Request $request, Transaksi $transaksi)
-    {
-        $request->validate([
+{
+    $request->validate([
         'nama_pelanggan' => 'required|min:3',
-        'layanan' => 'required',
-        'berat' => 'required|numeric',
-        'tanggal_masuk' => 'required',
-        'tanggal_ambil' => 'required',
+        'layanan'        => 'required',
+        'berat'          => 'required|numeric',
+        'status'         => 'required'
     ]);
 
-    $transaksi->update($request->all());
+    if ($request->layanan == 'Cuci') {
+        $harga = 5000;
+    } elseif ($request->layanan == 'Cuci + Setrika') {
+        $harga = 7000;
+    } else {
+        $harga = 4000;
+    }
+
+    $transaksi->update([
+        'nama_pelanggan' => $request->nama_pelanggan,
+        'layanan'        => $request->layanan,
+        'berat'          => $request->berat,
+        'total_harga'    => $harga * $request->berat,
+        'tanggal_masuk'  => $request->tanggal_masuk,
+        'tanggal_ambil'  => $request->tanggal_ambil,
+        'status'         => $request->status,
+    ]);
 
     return redirect()->route('transaksi.index')
-     ->with('success', 'Transaksi berhasil diupdate');
-    }
+        ->with('success', 'Transaksi berhasil diupdate');
+}
 
     public function destroy(Transaksi $transaksi)
     {
@@ -85,23 +123,44 @@ class TransaksiController extends Controller
     {
         $cari =
         $request->q;
-        $data =
-
-        Transaksi::where(
-        'user_id',
-        auth()->id()
-        )
-
-        ->where(
+        $data = Transaksi::where(
         'nama_pelanggan',
         'like',
         "%$cari%"
         )
-
         ->get();
         return response()
         ->json(
         $data
+        );
+    }
+
+    public function daftarTransaksi()
+    {
+        $transaksis = Transaksi::latest()
+            ->paginate(10);
+
+        $layanans = Layanan::all();
+
+        return view(
+            'admin.Transaksi.index',
+            compact(
+                'transaksis',
+                'layanans'
+            )
+        );
+        }
+    public function adminIndex()
+    {
+        $transaksi = Transaksi::paginate(10);
+        $layanans = Layanan::all();
+
+        return view(
+            'admin.transaksi.index',
+            compact(
+                'transaksi',
+                'layanans'
+            )
         );
     }
 }

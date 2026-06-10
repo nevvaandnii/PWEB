@@ -30,21 +30,25 @@ class="icons">
 
 <nav>
 
-<a href="{{ url('/dashboard') }}">
+<a href="{{ url('/admin.dashboard') }}">
 Dashboard
 </a>
 
-<a href="{{ route('transaksi.create') }}">
-Transaksi
-</a>
-
-<a href="{{ route('transaksi.index') }}">
+<a href="{{ route('admin.transaksi.index') }}">
 Daftar Transaksi
 </a>
 
-<a href="{{ url('/preferensi') }}">
-Preferensi
+<a href="{{ route('pegawai.index') }}">
+Pegawai
 </a>
+
+<a href="{{ route('layanan.index') }}">
+Layanan
+</a>
+
+{{-- <a href="{{ url('/preferensi') }}">
+Preferensi
+</a> --}}
 
 </nav>
 

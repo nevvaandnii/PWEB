@@ -41,7 +41,7 @@
 
         <input type="number" name="berat" placeholder="Berat (kg)">
 
-        <input type="text" placeholder="Total Harga (Auto)" disabled>
+        <input type="text" placeholder="Total Harga (Auto)" readonly>
 
         <div class="row">
           <input type="date" name="tglMasuk">

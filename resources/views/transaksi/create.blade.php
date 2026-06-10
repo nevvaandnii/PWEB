@@ -6,24 +6,17 @@
 <div class="transaksi-page">
   <div class="container">
 
-    <div class="price-list">
-      <h3>Daftar Layanan</h3>
+    @foreach($layanans as $layanan)
 
-      <div class="price-card">
-        <p>Cuci</p>
-        <span>Rp 5.000 / kg</span>
-      </div>
+    <div class="price-card">
+        <p>{{ $layanan->nama_layanan }}</p>
 
-      <div class="price-card">
-        <p>Cuci + Setrika</p>
-        <span>Rp 7.000 / kg</span>
-      </div>
-
-      <div class="price-card">
-        <p>Setrika</p>
-        <span>Rp 4.000 / kg</span>
-      </div>
+        <span>
+            Rp {{ number_format($layanan->harga_per_kg,0,',','.') }} / kg
+        </span>
     </div>
+
+    @endforeach
 
     <div class="form-transaksi">
 
@@ -40,22 +33,16 @@
                placeholder="Nama Pelanggan"
                value="{{ old('nama_pelanggan') }}">
 
-        <select name="layanan">
-
-          <option value="">Pilih Layanan</option>
-
-          <option value="5000">
-            Cuci
-          </option>
-
-          <option value="7000">
-            Cuci + Setrika
-          </option>
-
-          <option value="4000">
-            Setrika
-          </option>
-
+        <select name="layanan" id="layanan">
+            <option value="">Pilih Layanan</option>
+            @foreach($layanans as $layanan)
+                <option
+                    value="{{ $layanan->nama_layanan }}"
+                    data-harga="{{ $layanan->harga_per_kg }}"
+                >
+                    {{ $layanan->nama_layanan }}
+                </option>
+            @endforeach
         </select>
 
         <input type="number"
@@ -103,23 +90,48 @@
 
 <script>
 
-const layanan = document.querySelector('[name="layanan"]');
+const layanan = document.getElementById('layanan');
 const berat = document.querySelector('[name="berat"]');
-const total = document.querySelector('#totalHarga');
+const total = document.getElementById('totalHarga');
 
 function hitungTotal() {
-
-    let harga = layanan.value;
-    let kg = berat.value;
-
-    if (harga && kg) {
-        total.value = "Rp " + (harga * kg);
+    let selected =
+        layanan.options[layanan.selectedIndex];
+    let harga =
+        parseInt(selected.dataset.harga);
+    let kg =
+        parseFloat(berat.value);
+    if (!isNaN(harga) && !isNaN(kg)) {
+        total.value =
+            'Rp ' +
+            (harga * kg).toLocaleString('id-ID');
+    } else {
+        total.value = '';
     }
 }
-
 layanan.addEventListener('change', hitungTotal);
 berat.addEventListener('input', hitungTotal);
 
+const cards = document.querySelectorAll('.price-card');
+const selectLayanan = document.querySelector('[name="layanan"]');
+
+cards.forEach(card => {
+
+    card.addEventListener('click', () => {
+
+        cards.forEach(c =>
+            c.classList.remove('active')
+        );
+
+        card.classList.add('active');
+
+        selectLayanan.value =
+            card.dataset.layanan;
+
+        hitungTotal();
+    });
+
+});
 </script>
 
 @endpush

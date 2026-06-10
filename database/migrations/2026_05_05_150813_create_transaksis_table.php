@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
             $table->string('nama_pelanggan');
+            $table->string('layanan');
             $table->decimal('berat', 5, 2);
             $table->decimal('total_harga', 10, 2);
             $table->date('tanggal_masuk');
             $table->date('tanggal_ambil');
             $table->text('catatan')->nullable();
+            $table->string('foto_profil')->nullable();
             $table->enum('status', ['Proses', 'Selesai', 'Diambil'])->default('Proses');
             $table->timestamps();
         });
