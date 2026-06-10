@@ -81,21 +81,6 @@ Route::middleware('auth')->group(function(){
         [AdminDashboardController::class, 'index']
     )->name('admin.dashboard');
 
-    Route::get(
-        '/admin/pegawai',
-        [PegawaiController::class, 'index']
-    )->name('pegawai.index');
-
-    Route::get(
-        '/admin/pegawai/create',
-        [PegawaiController::class, 'create']
-    )->name('pegawai.create');
-
-    Route::post(
-        '/admin/pegawai',
-        [PegawaiController::class, 'store']
-    )->name('pegawai.store');
-
 });
 Route::get(
     '/search-pegawai',
