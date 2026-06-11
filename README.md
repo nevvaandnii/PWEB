@@ -1,58 +1,178 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Bersih.in Laundry
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![PHP](https://img.shields.io/badge/PHP-8.3%2B-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![MySQL](https://img.shields.io/badge/MySQL-Ready-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 
-## About Laravel
+Sistem manajemen laundry berbasis web. Bersih.in membantu pelanggan melakukan transaksi laundry dengan lebih mudah, sementara admin dapat mengelola layanan, transaksi, pegawai, dan memantau aktivitas laundry melalui dashboard.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Navigasi
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [Bersih.in Laundry](#bersihin-laundry)
+    - [Navigasi](#navigasi)
+    - [Tautan Project](#tautan-project)
+    - [Tentang Project](#tentang-project)
+    - [Preview Singkat](#preview-singkat)
+    - [Fitur](#fitur)
+        - [Untuk Pelanggan](#untuk-pelanggan)
+        - [Untuk Admin](#untuk-admin)
+        - [Sistem](#sistem)
+    - [Status Project](#status-project)
+    - [Batasan](#batasan)
+    - [Tech Stack](#tech-stack)
+    - [Konsep yang Digunakan](#konsep-yang-digunakan)
+    - [Instalasi](#instalasi)
+    - [Struktur Database](#struktur-database)
+    - [Penutup](#penutup)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Tautan Project
 
-## Learning Laravel
+- Website: https://pweb-production-3c59.up.railway.app
+- Repository: https://github.com/nevvaandnii/PWEB
+- Laporan: Laporan Akhir PWEB.pdf
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Tentang Project
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Bersih.in merupakan sistem manajemen laundry berbasis web yang dirancang untuk membantu proses pencatatan transaksi, pengelolaan layanan laundry, dan pengelolaan pegawai secara lebih efisien.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+Sistem menyediakan dashboard interaktif, pencarian transaksi berbasis AJAX, pengaturan preferensi tampilan menggunakan cookie, serta informasi cuaca operasional laundry yang diperoleh melalui API cuaca.
 
-## Agentic Development
+## Preview Singkat
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+| Area | Yang Bisa Dilakukan |
+|--------|--------|
+| Pelanggan | Melakukan transaksi laundry dan melihat informasi layanan |
+| Admin | Mengelola transaksi, layanan, dan pegawai |
+| Sistem | Menyimpan preferensi, menampilkan cuaca, dan statistik transaksi |
 
-```bash
-composer require laravel/boost --dev
+Alur sederhana:
 
-php artisan boost:install
+```text
+Pelanggan datang
+    -> memilih layanan
+    -> transaksi dibuat
+    -> admin memproses laundry
+    -> transaksi selesai
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+## Fitur
 
-## Contributing
+### Untuk Pelanggan
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- Login ke sistem.
+- Melihat informasi layanan laundry.
+- Melakukan transaksi laundry.
+- Melihat status transaksi.
+- Mengatur preferensi tampilan.
 
-## Code of Conduct
+### Untuk Admin
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- Dashboard monitoring.
+- Mengelola data layanan.
+- Mengelola data transaksi.
+- Mengelola data pegawai.
+- Melihat statistik transaksi.
+- Melakukan pencarian data transaksi.
 
-## Security Vulnerabilities
+### Sistem
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- Login dan autentikasi.
+- Dashboard statistik menggunakan Chart.js.
+- Integrasi API cuaca wilayah Jember.
+- AJAX Search transaksi.
+- Penyimpanan preferensi menggunakan Cookie.
+- Role admin dan user.
+- Responsive design.
 
-## License
+## Status Project
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+| Bagian | Status |
+|---------|---------|
+| Login | Tersedia |
+| Dashboard | Tersedia |
+| CRUD Transaksi | Tersedia |
+| CRUD Layanan | Tersedia |
+| CRUD Pegawai | Tersedia |
+| API Cuaca | Tersedia |
+| AJAX Search | Tersedia |
+| Cookie Preference | Tersedia |
+
+## Batasan
+
+Beberapa fitur berikut belum tersedia:
+
+- Pembayaran online.
+- Notifikasi WhatsApp.
+- Tracking laundry secara realtime.
+- Multi cabang laundry.
+- Laporan keuangan otomatis.
+
+## Tech Stack
+
+| Bagian | Teknologi |
+|---------|---------|
+| Backend | PHP, Laravel 12 |
+| Frontend | Blade, CSS, JavaScript |
+| Database | MySQL |
+| Chart | Chart.js |
+| API | wttr.in Weather API |
+| Hosting | Railway |
+
+## Konsep yang Digunakan
+
+- MVC (Model View Controller)
+- CRUD
+- Migration
+- Authentication
+- AJAX
+- Cookie
+- RESTful Route
+- API Integration
+- Responsive Web Design
+
+## Instalasi
+
+```bash
+git clone https://github.com/nevvaandnii/PWEB.git
+
+cd BersihIn
+
+composer install
+
+cp .env.example .env
+
+php artisan key:generate
+
+php artisan migrate
+
+php artisan serve
+```
+
+## Struktur Database
+
+Tabel utama:
+
+| Tabel | Fungsi |
+|---------|---------|
+| users | Menyimpan data akun pengguna |
+| transaksis | Menyimpan data transaksi laundry |
+| layanans | Menyimpan layanan laundry |
+| pegawais | Menyimpan data pegawai |
+
+Relasi:
+
+```text
+layanans
+    ↓
+transaksis
+
+users
+    ↓
+sistem login
+```
+
+## Penutup
+
+Bersih.in Laundry dibuat untuk membantu proses pengelolaan laundry menjadi lebih cepat, terorganisir, dan mudah digunakan. Sistem ini menerapkan konsep MVC Laravel, AJAX, Cookie, dan API sehingga dapat menjadi media pembelajaran pengembangan web modern.
