@@ -31,7 +31,7 @@ Sistem manajemen laundry berbasis web. Bersih.in membantu pelanggan melakukan tr
 
 - Website: https://pweb-production-3c59.up.railway.app
 - Repository: https://github.com/nevvaandnii/PWEB
-- Laporan: Laporan Akhir PWEB.pdf
+- Laporan: Proposal Akhir PWEB-1.pdf
 
 ## Tentang Project
 
