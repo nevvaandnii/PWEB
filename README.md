@@ -99,16 +99,6 @@ Pelanggan datang
 | AJAX Search | Tersedia |
 | Cookie Preference | Tersedia |
 
-## Batasan
-
-Beberapa fitur berikut belum tersedia:
-
-- Pembayaran online.
-- Notifikasi WhatsApp.
-- Tracking laundry secara realtime.
-- Multi cabang laundry.
-- Laporan keuangan otomatis.
-
 ## Tech Stack
 
 | Bagian | Teknologi |
